@@ -30,7 +30,7 @@ const reasons = [
 
 export function WhyChooseUs() {
   return (
-    <section className="section">
+    <section id="why-us" className="section">
       <div className="container-page">
         <SectionHeading
           eyebrow="Why choose us"
