@@ -101,7 +101,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IN" className={`${inter.variable} ${poppins.variable}`}>
+    <html
+      lang="en-IN"
+      data-scroll-behavior="smooth"
+      className={`${inter.variable} ${poppins.variable}`}
+    >
       <body>
         <a href="#main-content" className="skip-link">
           Skip to main content

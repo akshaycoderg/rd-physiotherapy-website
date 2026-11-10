@@ -77,7 +77,7 @@ export function Hero() {
                 src={heroImage}
                 alt="Representative image of a physiotherapy treatment room"
                 fill
-                priority
+                preload
                 sizes="(min-width: 1024px) 46vw, 100vw"
                 className="object-cover"
               />
