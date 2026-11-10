@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-poppins), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-primary-light: #eff6ff;
+  --color-navy: #163b65;
+  --color-navy-deep: #0f2c4d;
+  --color-teal: #2a9d8f;
+  --color-teal-light: #edf8f6;
+  --color-ink: #252b36;
+  --color-muted: #5b6573;
+  --color-mist: #f5f7fa;
+  --color-line: #e3e8ef;
+  --color-whatsapp: #0e7c4a;
+  --color-whatsapp-dark: #0a653c;
+
+  --shadow-card: 0 1px 2px rgb(22 59 101 / 0.04), 0 10px 30px -18px rgb(22 59 101 / 0.22);
+  --shadow-float: 0 24px 60px -30px rgb(22 59 101 / 0.35);
+  --shadow-button: 0 10px 24px -14px rgb(37 99 235 / 0.6);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+  }
+
+  @media (min-width: 768px) {
+    body {
+      padding-bottom: 0;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-navy;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: #dbeafe;
+    color: var(--color-navy);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .section-alt {
+    @apply border-y border-line bg-mist;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-primary sm:text-xs;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold leading-none transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-70;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2.5 text-[13px];
+  }
+
+  .btn-lg {
+    @apply px-6 py-3.5 text-[15px];
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white shadow-button hover:bg-primary-dark;
+  }
+
+  .btn-outline {
+    @apply border border-line bg-white text-navy hover:border-primary/40 hover:text-primary;
+  }
+
+  .btn-whatsapp {
+    @apply bg-whatsapp text-white hover:bg-whatsapp-dark;
+  }
+
+  .btn-ghost {
+    @apply text-navy hover:bg-mist;
+  }
+
+  .icon-tile {
+    @apply inline-flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary-light text-primary;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-navy;
+  }
+
+  .field-input {
+    @apply w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink transition-colors placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/15;
+  }
+
+  .field-error {
+    @apply mt-1.5 text-xs font-medium text-red-600;
+  }
+
+  .skip-link {
+    @apply fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-navy px-4 py-2 text-sm font-semibold text-white transition-transform focus:translate-y-0;
+  }
+
+  .prose-clinic h2 {
+    @apply mt-10 text-xl font-semibold text-navy;
+  }
+
+  .prose-clinic h3 {
+    @apply mt-7 text-base font-semibold text-navy;
+  }
+
+  .prose-clinic p {
+    @apply mt-3 text-[15px] leading-7 text-muted;
+  }
+
+  .prose-clinic ul {
+    @apply mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-7 text-muted;
+  }
+
+  .prose-clinic a {
+    @apply font-medium text-primary underline decoration-primary/30 underline-offset-2 hover:decoration-primary;
+  }
+}
+
+@layer utilities {
+  .hero-pattern {
+    background-image: radial-gradient(circle at 1px 1px, rgb(22 59 101 / 0.08) 1px, transparent 0);
+    background-size: 22px 22px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary {
+    list-style: none;
+  }
+
+  .faq-item[open] .faq-plus {
+    transform: rotate(45deg);
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+  }
+
+  .map-frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
